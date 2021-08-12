@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { ApilibreriaService } from '../services/apilibreria.service';
+import { AutorLibro } from '../models/autor';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogListaComponent } from './dialog/dialoglista.component';
 
 @Component({
   selector: 'app-lista',
@@ -7,9 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
-  constructor() { }
+  public lst: any;
 
-  ngOnInit(): void {
+  public lst2: any[] = [];
+
+  public columnas: string[] = ['nombre', 'fechaNacimiento'];
+
+
+  constructor(
+    private apilibreria: ApilibreriaService,
+    public dialog: MatDialog   
+  ) { 
+      
   }
 
+  ngOnInit(): void {
+    this.getLista();
+  }
+
+  getLista(){
+    this.apilibreria.getLibreria().subscribe( s => {
+      this.lst = s;
+      for (let i = 0; i < this.lst.length; i++) {
+        this.lst2.push(this.lst[i].lstLibros);
+      }
+      console.log(this.lst2);
+    });
+  }
+
+  openAdd(){
+    const dialogRef = this.dialog.open(DialogListaComponent, {
+      width: '60rem'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getLista();
+    });
+  }
 }

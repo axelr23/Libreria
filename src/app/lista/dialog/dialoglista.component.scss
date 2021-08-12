@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+}
+.formulario{
+    width: 100%;
+    display: flex;
+    .mat-form-field + .mat-form-field{
+        width: 100%;
+    }
+}

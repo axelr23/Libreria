@@ -1,11 +1,11 @@
 <mat-drawer-container>
-    <mat-drawer #drawer mode="side">
+    <mat-drawer #drawer mode="side" class="opciones">
         <a [routerLink]="['/home']" >Inicio</a><br>
         <a [routerLink]="['/lista']">Mostrar Lista</a>
     </mat-drawer>
 
-    <div>
-        <button (click)="drawer.toggle();">Mostrar</button>
+    <div class="header">
+        <button (click)="drawer.toggle();" mat-raised-button color="basic" class="boton-principal">Mostrar Opciones</button>
         <router-outlet></router-outlet>
     </div>
 </mat-drawer-container>
