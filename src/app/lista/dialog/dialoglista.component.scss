@@ -1,10 +1,35 @@
-h1{
+h1, h2{
     text-align: center;
 }
-.formulario{
+
+input{
     width: 100%;
+}
+
+.mat-form-field{
+    display: block;
+}
+
+button{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.formulario{
     display: flex;
-    .mat-form-field + .mat-form-field{
-        width: 100%;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    .autor{
+        flex: 1;
     }
+    .libro{
+        flex: 1;
+    }
+}
+
+.botones{
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
 }

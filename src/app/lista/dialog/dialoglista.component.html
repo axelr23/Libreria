@@ -1,44 +1,56 @@
-<h1 Mat-dialog-tittle>Nuevo Registro</h1>
+<h1 mat-dialog-tittle>Nuevo Registro</h1>
 <div mat-dialog-content class="formulario">
     <div class="autor">
-        <mat-form-field>
-            <mat-label>Id</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Fecha Nacimiento</mat-label>
-            <input matInput type="date">
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <mat-label>Pais Origen</mat-label>
-            <input matInput>
-        </mat-form-field>
+        <h2 mat-dialog-tittle>Autor</h2>
+        <div class="formulario-autor">
+            <mat-form-field>
+                <mat-label>Id</mat-label>
+                <input matInput type="number" [formControl] = "id">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput [formControl] = "nombre">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Fecha Nacimiento</mat-label>
+                <input matInput type="date" [formControl] = "fechaNacimiento">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>País Origen</mat-label>
+                <input matInput [formControl] = "paisOrigen">
+            </mat-form-field>
+        </div>
     </div>
 
-    <div class="Libro">
-        <h2 Mat-dialog-subtittle>Libro</h2>
+    <div class="libro">
+        <h2 mat-dialog-tittle>Libro</h2>
         <div>
             <mat-form-field>
-                <mat-label>Titulo</mat-label>
-                <input matInput>
+                <mat-label>Título</mat-label>
+                <input matInput [formControl] = "titulo">
             </mat-form-field>
             <br>
             <mat-form-field>
-                <mat-label>Titulo</mat-label>
-                <input matInput>
+                <mat-label>Año Publicación</mat-label>
+                <input matInput type="number" [formControl] = "anoPublicacion">
             </mat-form-field>
             <br>
+            <mat-form-field>
+                <mat-label>Número de Páginas</mat-label>
+                <input matInput type="number" [formControl] = "numeroPaginas">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Cantidad Inventario</mat-label>
+                <input matInput type="number" [formControl] = "cantidadInventario">
+            </mat-form-field>
         </div>
     </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="botones">
     <button mat-raised-button color="primary" (click)="addLista()">Guardar</button>
     <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
 </div>

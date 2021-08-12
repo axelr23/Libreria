@@ -13,19 +13,22 @@ import { Libro } from "src/app/models/libro";
 
 export class DialogListaComponent{
 
+    public lst: any;
+    public mayor: any = Number;
+
     //Datos Autor
-    public id: any;
-    public nombre: any;
-    public fechaNacimiento: any;
-    public paisOrigen: any;
+    public id: any = new FormControl('');
+    public nombre: any = new FormControl('');
+    public fechaNacimiento: any = new FormControl('');
+    public paisOrigen: any = new FormControl('');
     public lstLibros: any[] = [];
 
     //Datos Libro
-    public titulo: any;
-    public anoPublicacion: any;
-    public numeroPaginas: any;
-    public cantidadInventario: any;
-    public existencia: any;
+    public titulo: any = new FormControl('');
+    public anoPublicacion: any = new FormControl('');
+    public numeroPaginas: any = new FormControl('');
+    public cantidadInventario: any = new FormControl('');
+    public existencia: any = false;
     public idAutor: any;
 
 
@@ -40,10 +43,12 @@ export class DialogListaComponent{
     }
 
     addLista(){
-        const listaLibros: Libro = { titulo: this.titulo, anoPublicacion: this.anoPublicacion, numeroPaginas: this.numeroPaginas, 
-        cantidadInventario: this.cantidadInventario, existencia: this.existencia, idAutor: this.id};
+        const listaLibros: Libro = { titulo: this.titulo.value, anoPublicacion: this.anoPublicacion.value, 
+            numeroPaginas: this.numeroPaginas.value, cantidadInventario: this.cantidadInventario.value, 
+            existencia: false, idAutor: this.id.value};
         this.lstLibros.push(listaLibros);
-        const lista: AutorLibro = { id: this.id, nombre: this.nombre, fechaNacimiento: this.fechaNacimiento, paisOrigen: this.paisOrigen, lstLibros: this.lstLibros};
+        const lista: AutorLibro = { id: this.id.value, nombre: this.nombre.value, fechaNacimiento: this.fechaNacimiento.value,
+             paisOrigen: this.paisOrigen.value, lstLibros: this.lstLibros};
         this.apiLista.add(lista).subscribe(reponse => {
             if(reponse != null) {
                 this.dialogRef.close();
