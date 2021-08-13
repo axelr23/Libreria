@@ -32,10 +32,9 @@ export class ListaComponent implements OnInit {
   getLista(){
     this.apilibreria.getLibreria().subscribe( s => {
       this.lst = s;
-      // for (let i = 0; i < this.lst.length; i++) {
-      //   this.lst2.push(this.lst[i].lstLibros);
-      // }
-      // console.log(this.lst2);
+      for (let i = 0; i < this.lst.length; i++) {
+        this.lst2.push(this.lst[i].lstLibros);
+      }
     });
   }
 

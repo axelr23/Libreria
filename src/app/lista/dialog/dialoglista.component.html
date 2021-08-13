@@ -1,56 +1,50 @@
 <h1 mat-dialog-tittle>Nuevo Registro</h1>
-<div mat-dialog-content class="formulario">
-    <div class="autor">
-        <h2 mat-dialog-tittle>Autor</h2>
-        <div class="formulario-autor">
-            <mat-form-field>
-                <mat-label>Id</mat-label>
-                <input matInput type="number" [formControl] = "id">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input matInput [formControl] = "nombre">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Fecha Nacimiento</mat-label>
-                <input matInput type="date" [formControl] = "fechaNacimiento">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>País Origen</mat-label>
-                <input matInput [formControl] = "paisOrigen">
-            </mat-form-field>
+<div mat-dialog-content>
+    <form class="formulario" [formGroup] = "formularioRegistro">
+        <div class="autor">
+            <h2 mat-dialog-tittle>Autor</h2>
+            <div class="formulario-autor">
+                <mat-form-field>
+                    <input matInput placeholder="Id" type="number" formControlName = "id" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Nombre" formControlName = "nombre" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Fecha Nacimiento" type="date" formControlName = "fechaNacimiento" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="País Origen" formControlName = "paisOrigen" required>
+                </mat-form-field>
+            </div>
         </div>
-    </div>
 
-    <div class="libro">
-        <h2 mat-dialog-tittle>Libro</h2>
-        <div>
-            <mat-form-field>
-                <mat-label>Título</mat-label>
-                <input matInput [formControl] = "titulo">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Año Publicación</mat-label>
-                <input matInput type="number" [formControl] = "anoPublicacion">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Número de Páginas</mat-label>
-                <input matInput type="number" [formControl] = "numeroPaginas">
-            </mat-form-field>
-            <br>
-            <mat-form-field>
-                <mat-label>Cantidad Inventario</mat-label>
-                <input matInput type="number" [formControl] = "cantidadInventario">
-            </mat-form-field>
+        <div class="libro">
+            <h2 mat-dialog-tittle>Libro</h2>
+            <div>
+                <mat-form-field>
+                    <input matInput placeholder="Título" formControlName = "titulo" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Año Publicación" type="number" formControlName = "anoPublicacion" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Número de Páginas" type="number" formControlName = "numeroPaginas" required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <input matInput placeholder="Cantidad Inventario" type="number" formControlName = "cantidadInventario" required>
+                </mat-form-field>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 <div mat-dialog-actions class="botones">
-    <button mat-raised-button color="primary" (click)="addLista()">Guardar</button>
+    <button mat-raised-button color="primary" [disabled] = "!formularioRegistro.valid" (click)="addLista()">Guardar</button>
     <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
 </div>
