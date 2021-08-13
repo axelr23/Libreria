@@ -1,8 +1,15 @@
+.mat-drawer-container{
+    height: 100vh;
+}
+
 .opciones{
     padding: 0 1rem;
     margin-top: 1rem;
     a{
         font-size: 1rem;
+        text-decoration: none;
+        color: black;
+        margin-bottom: 2rem;
     }
 }
 .boton-principal{
